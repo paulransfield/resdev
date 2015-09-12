@@ -10,7 +10,7 @@ ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
 cd /var/www/html
 sudo cp -R bestpractice [new domain name]
 sudo chown $USER:$USER -R [new domain name]
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/[new domain name]
+sudo cp /etc/nginx/sites-available/bestpractice /etc/nginx/sites-available/[new domain name]
 sudo nano /etc/nginx/sites-available/[new domain name]
 sudo ln -s /etc/nginx/sites-available/[new domain name] /etc/nginx/sites-enabled/
 sudo service nginx restart
