@@ -1,1 +1,7 @@
 for i in *.gif; do eris files put "$i" && echo "$i" >> results.out; done
+
+sudo cp -R Source_Folder Destination_Folder
+
+sudo chown $USER:$USER -R <path to>/.blabla
+
+ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
