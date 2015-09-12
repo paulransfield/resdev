@@ -14,3 +14,6 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/[new domai
 sudo nano /etc/nginx/sites-available/[new domain name]
 sudo ln -s /etc/nginx/sites-available/[new domain name] /etc/nginx/sites-enabled/
 sudo service nginx restart
+add ns1=[IP address] ns2=[IP address] n3=[IP address]
+add ns1.digitalocean.com | ns2.digitalocean.com | ns3.digitalocean.com for DNS
+
