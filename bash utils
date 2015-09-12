@@ -13,3 +13,4 @@ sudo chown $USER:$USER -R [new domain name]
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/[new domain name]
 sudo nano /etc/nginx/sites-available/[new domain name]
 sudo ln -s /etc/nginx/sites-available/[new domain name] /etc/nginx/sites-enabled/
+sudo service nginx restart
