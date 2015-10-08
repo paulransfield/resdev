@@ -1,4 +1,4 @@
-for i in *.gif; do eris files put "$i" && echo "$i" >> results.out; done
+for i in *.gif; do eris files put "$i" && echo "$i"; done > list.out
 
 sudo cp -R Source_Folder Destination_Folder
 
