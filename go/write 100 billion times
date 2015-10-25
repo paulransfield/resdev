@@ -1,0 +1,46 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"strconv"
+	"crypto/sha1"
+	"encoding/hex"
+	"os"
+	"time"
+)
+
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}	
+
+func main() {
+	t0 := time.Now()
+	fmt.Println(t0.Format("20060102150405"))
+
+	i := 1
+	for i < 1000 {
+	  s := []byte(strconv.Itoa(i))
+	  h := sha1.New()
+	  h.Write([]byte(s))
+	  bs := hex.EncodeToString(h.Sum(nil))
+
+	  g, err := os.OpenFile("dat2", os.O_RDWR|os.O_APPEND, 0660)
+	  check(err)
+	  defer g.Close()
+	  g.Sync()
+
+	  w := bufio.NewWriter(g)
+	  w.WriteString(bs)
+	  w.WriteString("\n")
+//	  fmt.Println(i, bs)
+
+	  w.Flush()
+	  g.Close()
+	  i = i + 1
+	} 
+	t1 := time.Now()
+	fmt.Println(t1.Format("20060102150405"))
+}
