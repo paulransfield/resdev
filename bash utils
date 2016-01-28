@@ -17,3 +17,4 @@ sudo service nginx restart
 add ns1=[IP address] ns2=[IP address] n3=[IP address]
 add ns1.digitalocean.com | ns2.digitalocean.com | ns3.digitalocean.com for DNS
 
+lsof -ti:3000 | xargs kill -9 #kill the process listening on port 3000
