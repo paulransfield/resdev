@@ -1,0 +1,68 @@
+#Install eris_cli dependencies
+
+#00_17 Add a newuser - change [newuser] with name
+adduser [newuser]
+gpasswd -a [newuser] sudo
+
+#01_17 Check OS from command line
+lsb_release -a
+
+#02_17 Update and upgrade ubuntu package list
+sudo apt-get update && sudo apt-get upgrade
+
+#03_17 Update and upgrade ubuntu package list
+sudo apt-get install git
+
+#04_17 Add your git name - replace [your name]
+git config --global user.name "[your name]"
+
+#05_17 Add your git email - replace [your email]
+git config --global user.email "[your email]"
+
+#06_17 Check git config settings
+git config --list
+
+#07_17 Install mercurial and libgmp3-dev
+sudo apt-get install mercurial && sudo apt-get install libgmp3-dev
+
+#08_17 Go to https://golang.org/dl/ and copy link url for golang 1.5
+sudo wget https://storage.googleapis.com/golang/go1.5.linux-amd64.tar.gz
+
+#09_17 untar go distribution files
+sudo tar xf go1.5.linux-amd64.tar.gz
+sudo rm go1.5.linux-amd64.tar.gz
+
+#10_17 add GOPATH to [user] .profile file
+sudo echo “export GOROOT=\$HOME/go” >> ~/.profile
+sudo echo “PATH=$PATH:\$GOROOT/bin” >> ~/.profile
+
+#11_17 Refresh profile and check go install
+source ~/.profile
+go version
+
+#12_17 Add path to go project files to .profile nb GOPATH and GOROOT must be different
+sudo mkdir ~/gocode
+
+#13_17 Write GOPATH to [user] .profile file - refresh your profile
+sudo echo “export GOPATH=\$HOME/gocode” >> ~/.profile
+sudo echo “PATH=\$PATH:\$GOPATH/bin” >> ~/.profile
+source ~/.profile
+
+#14_17 Change ownew of the go project folder
+chown $USER - R ~/gocode
+
+#15_17 Install Docker
+curl -sSL https://get.docker.com/ | sh
+
+#16_17 Add [user] to docker user group to not require sudo with docker
+sudo usermod -a -G docker $USER
+exit
+docker version
+
+#17_17 Install eris_cli
+go get github.com/eris-ltd/eris-cli/cmd/eris
+eris init
+
+#01_02 Create a new chain - replace [test_chain] with name
+eris chains new [test_chain]
+eris chains ls
