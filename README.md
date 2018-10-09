@@ -1,5 +1,5 @@
-# kapai.tv
-lets make [ kapai | good ] tv
+# resdev
+useful scripts
 
 repository purpose:
-- template for supply level agreements
+- testing node code
