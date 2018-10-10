@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>ResDev</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Raleway:400);
+    h1{font: 400 1.75em/1.5em "Raleway", "Helvetica Neue", Helvetica, sans-serif; text-align:center;}
+  </style>
+</head>
+<body>
+  <div class="container">
+  <nav class="navbar navbar-default-inverse">
+     <div class="container-fluid">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="/">EduTech</a>
+       </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       <div class="btn-group navbar-btn">
+         <a href="http://resdev1.hitop.co.nz/blog/quiz_01" class="btn btn-danger">Play</a>
+         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li><a href="http://resdev1.hitop.co.nz/blog/quiz_01">Quiz</a></li>
+           <li><a href="http://mnishiguchi.github.io/react_concentration">Memory</a></li>
+           <li role="separator" class="divider">What</li>
+           <li><a href="http://resdev1.hitop.co.nz/blog/countries.html">Where ...</a></li>
+           <li><a href="http://resdev1.hitop.co.nz/blog/globe.html">Who ...</a></li>
+           <li><a href="http://resdev1.hitop.co.nz/blog/cluster.html">Sort ...</a></li>
+           <li><a href="http://resdev1.hitop.co.nz/blog/cardsort">Dragula ...</a></li>
+           <li><a href="http://resdev1.hitop.co.nz/blog/universe.html">Universe ...</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="http://resdev1.hitop.co.nz/blog" class="btn btn-success">Interact</a>
+         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li role="separator" class="divider">Data</li>
+           <li><a href="http://resdev1.hitop.co.nz/blog">MongoDB contest</a></li>
+           <li><a href="#">Socket.io multiplay </a></li>
+           <li role="separator" class="divider">Careers NZ tools</li>
+           <li><a href="#">Career quest</a></li>
+           <li><a href="https://www.careers.govt.nz/tools/skills-builder/">Skills builder</a></li>
+           <li><a href="#">CV builder</a></li>
+           <li><a href="#">My career portfolio</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="http://resdev1.hitop.co.nz/blog/youtube" class="btn btn-primary">Curate</a>
+         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li role="separator" class="divider">Search</li>
+           <li><a href="http://resdev1.hitop.co.nz/blog/youtube">YouTube</a></li>
+           <li><a href="#">Wikipedia</a></li>
+           <li><a href="#">Gify</a></li>
+           <li role="separator" class="divider">Careers API</li>
+           <li><a href="http://resdev1.hitop.co.nz">Jobs Galore - PDF</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="https://careersnz.bridgeapp.com" class="btn btn-warning">Learn</a>
+         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li role="separator" class="divider">Search</li>
+           <li><a href="https://careersnz.bridgeapp.com">Bridge COOL</a></li>
+           <li><a href="https://www.pond.co.nz/community/20506/careers-new-zealand/1">Pond COP</a></li>
+           <li><a href="https://coolcareers.slack.com">Slack COOL</a></li>
+           <li><a href="https://www.linkedin.com/groups/8360065">LinkedIn Groups</a></li>
+           <li><a href="#">Pond COL</a></li>
+           <li role="separator" class="divider">Social</li>
+           <li><a href="https://www.youtube.com/user/careersnz">YouTube</a></li>
+           <li><a href="https://twitter.com/kapai_tv/status/856631646577057793">Twitter</a></li>
+           <li><a href="#">Instagram</a></li>
+           <li><a href="#">Facebook</a></li>
+           <li role="separator" class="divider">Resources</li>
+           <li><a href="https://careers.govt.nz/practitioners">Resources</a></li>
+           <li><a href="http://pin.it/ZE9DTth">Pinterest</a></li>
+           <li><a href="#">Google docs</a></li>
+           <li role="separator" class="divider">Resources</li>
+           <li><a href="#">Change requests via JIRA</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="http://resdev1.hitop.co.nz/blog/youtube" class="btn btn-info">Native</a>
+         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li role="separator" class="divider">Search</li>
+           <li><a href="https://play.google.com/store/apps?hl=en">Android</a></li>
+           <li><a href="https://itunes.apple.com/nz/genre/ios/id36?mt=8">Apple iOS</a></li>
+         </ul>
+       </div>
+       <form class="navbar-form navbar-right" role="search">
+         <div class="form-group">
+           <input type="text" class="form-control" placeholder="Blockchain ID">
+         </div>
+         <button type="submit" class="btn btn-default">Login</button>
+       </form>
+     </div>
+   </div>
+   </nav>
+  </div>
+ <div class="container"><h3 class="text-left" >My employability skills</h3></div>
+ <div class="container"><p class="align-center">Interactive sort with D3.js</p></div></div>
+ <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse footer">
+   <div class="container">
+     <div class="navbar-header">
+       <a class="navbar-brand footerfont" href="http://resdev1.hitop.co.nz/blog/countries.html">Mana Rapuara ResDev - Digital Design Suite - Visual + Interactive + Data</a>
+     </div>
+   </div>
+ </nav>
+</body>
+<script>
+var   w = 800,
+      h = 550,
+      circleWidth = 15;
+
+
+var palette = {
+      "lightgray": "#E5E8E8",
+      "gray": "#708284",
+      "mediumgray": "#536870",
+      "blue": "#3B757F"
+  }
+
+var colors = d3.scale.category20();
+
+var nodes = [
+      { name: "My Skills"},
+      { name: "Resilience", target: [0], value: 50 },
+      { name: "Communication", target: [0, 1], value: 50 },
+      { name: "Teamwork", target: [0, 1, 2], value: 50 },
+      { name: "Self-management", target: [0, 3], value: 50 },
+      { name: "Willingness to learn", target: [0,3,4], value: 50 },
+      { name: "Thinking skills", target: [0,3,4,5], value: 50 },
+      { name: "Positive attitude", target: [0, 1, 2], value: 50 },
+];
+
+var links = [];
+
+for (var i = 0; i < nodes.length; i++){
+      if (nodes[i].target !== undefined) {
+            for ( var x = 0; x < nodes[i].target.length; x++ )
+              links.push({
+                  source: nodes[i],
+                  target: nodes[nodes[i].target[x]]
+              });
+      };
+};
+
+
+var myChart = d3.select('p')
+      .append("div")
+        .classed("svg-container", true)
+
+      .append('svg')
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 1000 600")
+        .classed("svg-content-responsive", true)
+
+
+var force = d3.layout.force()
+      .nodes(nodes)
+      .links([])
+      .gravity(0.1)
+      .charge(-1000)
+      .size([w,h]);
+
+      var link = myChart.selectAll('line')
+            .data(links).enter().append('line')
+            .attr('stroke', palette.lightgray)
+            .attr('strokewidth', '1');
+
+      var node =  myChart.selectAll('circle')
+            .data(nodes).enter()
+            .append('g')
+            .call(force.drag);
+
+
+     node.append('circle')
+            .attr('cx', function(d){return d.x; })
+            .attr('cy', function(d){return d.y; })
+            .attr('r', function(d,i){
+                  console.log(d.value);
+                  if ( i > 0 ) {
+                        return circleWidth + d.value;
+                  } else {
+                        return circleWidth + 35;
+                  }
+            })
+            .attr('fill', function(d,i){
+                  if ( i > 0 ) {
+                        return colors(i);
+                  } else {
+                        return '#fff';
+                  }
+            })
+            .attr('strokewidth', function(d,i){
+                  if ( i > 0 ) {
+                        return '0';
+                  } else {
+                        return '2';
+                  }
+            })
+            .attr('stroke', function(d,i){
+                  if ( i > 0 ) {
+                        return '';
+                  } else {
+                        return 'black';
+                  }
+            });
+
+
+      force.on('tick', function(e){
+            node.attr('transform', function(d, i){
+              return 'translate(' + d.x + ','+ d.y + ')'
+            })
+
+          link
+              .attr('x1', function(d){ return d.source.x; })
+              .attr('y1', function(d){ return d.source.y; })
+              .attr('x2', function(d){ return d.target.x; })
+              .attr('y2', function(d){ return d.target.y; })
+      });
+
+
+      node.append('text')
+            .text(function(d){ return d.name; })
+            .attr('font-family', 'Raleway', 'Helvetica Neue, Helvetica')
+            .attr('fill', function(d, i){
+              console.log(d.value);
+                  if ( i > 0 && d.value < 10 ) {
+                        return palette.mediumgray;
+                  } else if ( i > 0 && d.value >10 ) {
+                        return palette.lightgray;
+                  } else {
+                        return palette.blue;
+                  }
+            })
+            .attr('text-anchor', function(d, i) {
+                  return 'middle';
+            })
+            .attr('font-size', function(d, i){
+                  if (i > 0) {
+                        return '1.2em';
+                  } else {
+                        return '1em';
+                  }
+            })
+
+force.start();
+</script>
+</html>
