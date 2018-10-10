@@ -1,7 +1,11 @@
 const express = require('express'),
 path = require('path'),
 app = express(),
- 
+
+var log = function(entry) {
+    fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
+};
+
 // getting port this way
 port = process.env.PORT || process.argv[2] || 80;
  
