@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" >
-
 <head>
   <meta charset="UTF-8">
-  <title>Banksy Shredder</title>
+  <title>ResDev API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-  
-      <link rel="stylesheet" href="css/style.css">
-
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Raleway:400);
+    h1{font: 400 1.75em/1.5em "Raleway", "Helvetica Neue", Helvetica, sans-serif; text-align:center;}
+  </style>  
 </head>
-
 <body>
-
-    <main id="banksy">
-    <header>
-      <a href="https://medium.com/@leemartin/how-to-recreate-the-banksy-artwork-shredder-using-css-grid-ff20c0f5a19" target="blank">Read Tutorial on Medium</a>
-    </header>
-    
+   <main id="banksy">    
     <div id="piece" @click="$refs.art.click()">
       <div id="holder">
         <div id="painting">        
@@ -43,17 +44,9 @@
   </div>
   <input ref="art" type="file" accept="image/*" @change="artSelected">
 </main>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-load-image/2.19.0/load-image.all.min.js'></script>
-
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
+<script  src="js/index.js"></script>
 </body>
-
 </html>
