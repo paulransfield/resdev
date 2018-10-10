@@ -1,17 +1,17 @@
-const express = require('express'),
-path = require('path'),
-app = express(),
+const express = require('express');
+const path = require('path');
+const app = express();
 
-var log = function(entry) {
+const log = function(entry) {
     fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
 };
 
-// getting port this way
-port = process.env.PORT || process.argv[2] || 80;
- 
 // using app.use to use static files in my public 
 // folder for the root level of the site
 app.use('/', express.static('public'));
+
+// getting port this way
+const port = process.env.PORT || process.argv[2] || 80;
  
 app.listen(port, function () {
      console.log('app up on port: ' + port);
