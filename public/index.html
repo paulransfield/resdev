@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
+<html>
+ <head>
+  <title>ResDev</title>
   <meta charset="UTF-8">
-  <title>ResDev API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
   <style>
     @import url(http://fonts.googleapis.com/css?family=Raleway:400);
     h1{font: 400 1.75em/1.5em "Raleway", "Helvetica Neue", Helvetica, sans-serif; text-align:center;}
   </style>
 </head>
-  </head>
 <body>
   <div class="container">
   <nav class="navbar navbar-default-inverse">
@@ -111,8 +114,9 @@
    </div>
    </nav>
   </div>
-  <h1 class="Header text-center">Home page Paul</h1>
-   <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse footer">
+ <div class="container"><h3 class="text-left" >My employability skills</h3></div>
+ <div class="container"><p class="align-center">Interactive sort with D3.js</p></div></div>
+ <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse footer">
    <div class="container">
      <div class="navbar-header">
        <a class="navbar-brand footerfont" href="#">ResDev - Digital Design Suite - Visual + Interactive + Data</a>
@@ -120,4 +124,123 @@
    </div>
  </nav>
 </body>
+<script>
+var   w = 800,
+      h = 550,
+      circleWidth = 15;
+var palette = {
+      "lightgray": "#E5E8E8",
+      "gray": "#708284",
+      "mediumgray": "#536870",
+      "blue": "#3B757F"
+  }
+var colors = d3.scale.category20();
+var nodes = [
+      { name: "My Skills"},
+      { name: "Resilience", target: [0], value: 50 },
+      { name: "Communication", target: [0, 1], value: 50 },
+      { name: "Teamwork", target: [0, 1, 2], value: 50 },
+      { name: "Self-management", target: [0, 3], value: 50 },
+      { name: "Willingness to learn", target: [0,3,4], value: 50 },
+      { name: "Thinking skills", target: [0,3,4,5], value: 50 },
+      { name: "Positive attitude", target: [0, 1, 2], value: 50 },
+];
+var links = [];
+for (var i = 0; i < nodes.length; i++){
+      if (nodes[i].target !== undefined) {
+            for ( var x = 0; x < nodes[i].target.length; x++ )
+              links.push({
+                  source: nodes[i],
+                  target: nodes[nodes[i].target[x]]
+              });
+      };
+};
+var myChart = d3.select('p')
+      .append("div")
+        .classed("svg-container", true)
+      .append('svg')
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 1000 600")
+        .classed("svg-content-responsive", true)
+var force = d3.layout.force()
+      .nodes(nodes)
+      .links([])
+      .gravity(0.1)
+      .charge(-1000)
+      .size([w,h]);
+      var link = myChart.selectAll('line')
+            .data(links).enter().append('line')
+            .attr('stroke', palette.lightgray)
+            .attr('strokewidth', '1');
+      var node =  myChart.selectAll('circle')
+            .data(nodes).enter()
+            .append('g')
+            .call(force.drag);
+     node.append('circle')
+            .attr('cx', function(d){return d.x; })
+            .attr('cy', function(d){return d.y; })
+            .attr('r', function(d,i){
+                  console.log(d.value);
+                  if ( i > 0 ) {
+                        return circleWidth + d.value;
+                  } else {
+                        return circleWidth + 35;
+                  }
+            })
+            .attr('fill', function(d,i){
+                  if ( i > 0 ) {
+                        return colors(i);
+                  } else {
+                        return '#fff';
+                  }
+            })
+            .attr('strokewidth', function(d,i){
+                  if ( i > 0 ) {
+                        return '0';
+                  } else {
+                        return '2';
+                  }
+            })
+            .attr('stroke', function(d,i){
+                  if ( i > 0 ) {
+                        return '';
+                  } else {
+                        return 'black';
+                  }
+            });
+      force.on('tick', function(e){
+            node.attr('transform', function(d, i){
+              return 'translate(' + d.x + ','+ d.y + ')'
+            })
+          link
+              .attr('x1', function(d){ return d.source.x; })
+              .attr('y1', function(d){ return d.source.y; })
+              .attr('x2', function(d){ return d.target.x; })
+              .attr('y2', function(d){ return d.target.y; })
+      });
+      node.append('text')
+            .text(function(d){ return d.name; })
+            .attr('font-family', 'Raleway', 'Helvetica Neue, Helvetica')
+            .attr('fill', function(d, i){
+              console.log(d.value);
+                  if ( i > 0 && d.value < 10 ) {
+                        return palette.mediumgray;
+                  } else if ( i > 0 && d.value >10 ) {
+                        return palette.lightgray;
+                  } else {
+                        return palette.blue;
+                  }
+            })
+            .attr('text-anchor', function(d, i) {
+                  return 'middle';
+            })
+            .attr('font-size', function(d, i){
+                  if (i > 0) {
+                        return '1.2em';
+                  } else {
+                        return '1em';
+                  }
+            })
+force.start();
+</script>
 </html>
