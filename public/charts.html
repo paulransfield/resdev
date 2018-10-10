@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>ResDev APIs</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css" rel="stylesheet">
+        <!-- import plugin script -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    </head>
+<body>
+  <div class="container">
+  <nav class="navbar navbar-default-inverse">
+     <div class="container-fluid">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="/">EduTech</a>
+       </div>
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       <div class="btn-group navbar-btn">
+         <a href="#" class="btn btn-danger">Play</a>
+         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li><a href="countries.html">Where ...</a></li>
+           <li><a href="globe.html">Who ...</a></li>
+           <li><a href="cluster.html">Sort ...</a></li>
+           <li><a href="shredder.html">Shredder ...</a></li>
+           <li role="separator" class="divider">Social</li>
+           <li><a href="#">Change requests via JIRA</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="#" class="btn btn-success">Curate</a>
+         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li><a href="#">Career quest</a></li>
+           <li><a href="#">Skills builder</a></li>
+           <li><a href="#">CV builder</a></li>
+           <li><a href="#">My career portfolio</a></li>
+           <li role="separator" class="divider">Social</li>
+           <li><a href="#">YouTube</a></li>
+           <li><a href="#">Twitter</a></li>
+           <li><a href="#">Instagram</a></li>
+           <li><a href="#">Facebook</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="https://careersnz.bridgeapp.com" class="btn btn-warning">Learn</a>
+         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li role="separator" class="divider">Search</li>
+           <li><a href="https://careersnz.bridgeapp.com">Bridge COOL</a></li>
+           <li><a href="#">Slack COOL</a></li>
+           <li><a href="#">LinkedIn Groups</a></li>
+           <li><a href="#">Pond COL</a></li>
+           <li role="separator" class="divider">Resources</li>
+           <li><a href="#">Pinterest</a></li>
+           <li><a href="#">Google docs</a></li>
+           <li><a href="#">Wikipedia</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="#" class="btn btn-primary">Data</a>
+         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+	         <li><a href="piecharts.html">Pie charts ...</a></li>
+	         <li><a href="charts.html">Charts.js ...</a></li>
+           <li role="separator" class="divider">Careers API</li>
+           <li><a href="#">Jobs Galore - PDF</a></li>
+         </ul>
+       </div>
+       <div class="btn-group navbar-btn">
+         <a href="#" class="btn btn-info">Mobile</a>
+         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <ul class="dropdown-menu">
+           <li role="separator" class="divider">Search</li>
+           <li><a href="https://play.google.com/store/apps?hl=en">Android</a></li>
+           <li><a href="https://itunes.apple.com/nz/genre/ios/id36?mt=8">Apple iOS</a></li>
+         </ul>
+       </div>
+       <form class="navbar-form navbar-right" role="search">
+         <div class="form-group">
+           <input type="text" class="form-control" placeholder="Blockchain API">
+         </div>
+         <button type="submit" class="btn btn-default">Login</button>
+       </form>
+     </div>
+   </div>
+   </nav>
+  </div>
+<div class="container">
+        <!-- line chart canvas element -->
+        <canvas id="buyers" width="550" height="400"></canvas>
+        <!-- pie chart canvas element -->
+        <canvas id="countries" width="550" height="400"></canvas>
+        <!-- bar chart canvas element -->
+        <canvas id="income" width="550" height="400"></canvas>
+</div>
+ <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse footer" style="background-color: #e3f2fd">
+   <div class="container">
+     <div class="navbar-header">
+       <a class="navbar-brand" href="/">ResDev - Digital Design Suite - Visual + Interactive + Data</a>
+     </div>
+   </div>
+ </nav>
+        <script>
+            // line chart data
+            var buyerData = {
+                labels : ["January","February","March","April","May","June"],
+                datasets : [
+                {
+                    fillColor : "rgba(172,194,132,0.4)",
+                    strokeColor : "#ACC26D",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#9DB86D",
+                    data : [203,156,99,251,305,247]
+                }
+            ]
+            }
+            // get line chart canvas
+            var buyers = document.getElementById('buyers').getContext('2d');
+            // draw line chart
+            new Chart(buyers).Line(buyerData);
+            // pie chart data
+            var pieData = [
+                {
+                    value: 20,
+                    color:"#878BB6"
+                },
+                {
+                    value : 40,
+                    color : "#4ACAB4"
+                },
+                {
+                    value : 10,
+                    color : "#FF8153"
+                },
+                {
+                    value : 30,
+                    color : "#FFEA88"
+                }
+            ];
+            // pie chart options
+            var pieOptions = {
+                 segmentShowStroke : false,
+                 animateScale : true
+            }
+            // get pie chart canvas
+            var countries= document.getElementById("countries").getContext("2d");
+            // draw pie chart
+            new Chart(countries).Pie(pieData, pieOptions);
+            // bar chart data
+            var barData = {
+                labels : ["January","February","March","April","May","June"],
+                datasets : [
+                    {
+                        fillColor : "#48A497",
+                        strokeColor : "#48A4D1",
+                        data : [456,479,324,569,702,600]
+                    },
+                    {
+                        fillColor : "rgba(73,188,170,0.4)",
+                        strokeColor : "rgba(72,174,209,0.4)",
+                        data : [364,504,605,400,345,320]
+                    }
+                ]
+            }
+            // get bar chart canvas
+            var income = document.getElementById("income").getContext("2d");
+            // draw bar chart
+            new Chart(income).Bar(barData);
+        </script>
+    </body>
+</html>
