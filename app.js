@@ -8,7 +8,7 @@ const log = function(entry) {
 
 // using app.use to use static files in my public 
 // folder for the root level of the site
-app.use('/', express.static('public'));
+app.use('/static/', express.static('public'));
 
 // using app.get app.put app.post and app.delete for api
 
