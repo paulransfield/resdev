@@ -8,7 +8,9 @@ const log = function(entry) {
 };
 
 //connect to mongodb
-mongoose.connect('mongodb://paulr:ii3Tfxp1qTFGQoJGcqsNk0LOtoevNx6m@ds129823.mlab.com:29823/resdev_apitest');
+mongoose.connect('mongodb://paulr:ii3Tfxp1qTFGQoJGcqsNk0LOtoevNx6m@ds129823.mlab.com:29823/resdev_apitest')
+    .then(() => console.log('Connected to mongo ...'))
+    .catch(err => console.error('Not connected to mongo ...', err));
 
 // using app.use to use static files in my public 
 // folder for the root level of the site
