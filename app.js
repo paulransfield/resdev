@@ -10,7 +10,7 @@ const log = function(entry) {
 //connect to mongodb
 mongoose.connect('mongodb://paulr:ii3Tfxp1qTFGQoJGcqsNk0LOtoevNx6m@ds129823.mlab.com:29823/resdev_apitest')
     .then(() => console.log('Connected to MongoDB..'))
-    .catch(err => console.log('Could not connect to MongoDB ...', err));
+    .catch(err => console.error('Could not connect to MongoDB ...', err));
 
 // using app.use to use static files in my public 
 // folder for the root level of the site
