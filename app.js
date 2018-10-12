@@ -1,10 +1,16 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 
 const log = function(entry) {
     fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
 };
+
+//connect to mongodb
+mongoose.connect('mongodb://paulr:ii3Tfxp1qTFGQoJGcqsNk0LOtoevNx6m@ds129823.mlab.com:29823/resdev_apitest')
+    .then(() => console.log('Connected to MongoDB..'))
+    .catch(err => console.log('Could not connect to MongoDB ...', err));
 
 // using app.use to use static files in my public 
 // folder for the root level of the site
