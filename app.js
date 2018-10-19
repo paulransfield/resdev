@@ -15,6 +15,7 @@ mongoose.connect('mongodb://paulr:ii3Tfxp1qTFGQoJGcqsNk0LOtoevNx6m@ds129823.mlab
 // using app.use to use static files in my public 
 // folder for the root level of the site
 app.use('/static/', express.static('public'));
+app.use('/static/', express.static('templates'));
 
 // using app.get app.put app.post and app.delete for api
 
