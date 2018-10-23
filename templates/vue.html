@@ -108,20 +108,27 @@
    </div>
    </nav>
   </div>
+
 <div class="container">
 <div id="app">
   <h3>My Identicon Generator</h3>
-  
-  <div>
-    Input:
-    <input v-on:input="onInput"/>
-  </div>
-  
-  <div>
-    Output:
-  </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Identicon</th>
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+          <td><div><input v-on:input="onInput"></div></td>
+          <td><div v-html="identicon"></div></td>
+        </tr>
+      </tbody>
+    </table>
 </div>
 </div>
+
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse footer" style="background-color: #e3f2fd">
    <div class="container">
      <div class="navbar-header">
